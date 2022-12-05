@@ -1,0 +1,48 @@
+/* styles for header */
+#header {
+    display: flex;
+    width: 100%;
+}
+#nav {
+    display: flex;
+    width: 70%;
+}
+#linksList {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    list-style: none;
+}
+/* styles for main content */
+#main {
+    display: flex;
+    gap: 10px;
+}
+
+.contentBox {
+    display: flex;
+    flex-direction: column;
+}
+.homePageLoader {
+
+}
+
+/* styles for profile */
+#profile {
+    width: 400px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#profilePhoto {
+    height: 300px;
+}
+
+#profileDescription, #profileName {
+    width: 350px;
+    display: flex;
+    justify-content: center;
+}
