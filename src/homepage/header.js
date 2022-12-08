@@ -1,4 +1,4 @@
-
+import { jsPageLoader } from './modules/javascript.js';
 
 function headerLoader() {
     let container = document.createElement('div');
@@ -17,7 +17,7 @@ function myLinks() {
     navBar.setAttribute('id', 'nav');
     let list = document.createElement('ul');
     list.setAttribute('id', 'linksList');
-    list.appendChild(linkFactory('Javascript'));
+    list.appendChild(linkFactory('Front-End Development', jsPageLoader));
     list.appendChild(linkFactory('Philosophy'));
     list.appendChild(linkFactory('Teaching'));
     list.appendChild(linkFactory('Games Writing'));
@@ -25,10 +25,13 @@ function myLinks() {
     return navBar;
 }
     //Note to self: add 'link' as paramter to linkFactory when ready to implement links
-function linkFactory(text) {
+function linkFactory(text, cb = null) {
     let listItem = document.createElement('li');
     let myLink = document.createElement('h4');
-    myLink.textContent = text;
+    myLink.innerHTML = text;
+    if (cb !== null) {
+        myLink.addEventListener('click', cb);
+    } 
     listItem.appendChild(myLink);
     return listItem;
 }

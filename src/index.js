@@ -1,6 +1,6 @@
 import './style.css';
 import { headerLoader } from './homepage/header.js';
-import { homePageLoader } from './homepage/homePageLoader.js';
+import { homePageLoader } from './homepage/modules/whoIAm.js';
 
 console.log('test');
 

@@ -15,7 +15,7 @@
     list-style: none;
 }
 /* styles for main content */
-#main {
+#mainContainer {
     display: flex;
     gap: 10px;
 }
@@ -45,4 +45,10 @@
     width: 350px;
     display: flex;
     justify-content: center;
+}
+
+/* styles for Philosophy */
+
+#italic {
+    font-style: italic;
 }
