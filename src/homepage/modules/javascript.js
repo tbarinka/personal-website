@@ -36,13 +36,12 @@ function jsMainContentLoader() {
     return jsContent;
 }
 
-let jsBox = contentBoxFactory("Web Development", jsMainContentLoader());
-
 function jsPageLoader() {
     let container = document.getElementById('mainContainer');
     removeAllChildNodes(container);
+    let jsBox = contentBoxFactory("Web Development", jsMainContentLoader());
     container.appendChild(profileLoader());
     container.appendChild(mainContent(jsBox));
 }
 
-export { jsBox, jsPageLoader };
+export { jsPageLoader };
