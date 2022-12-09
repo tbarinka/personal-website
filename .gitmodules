@@ -1,3 +1,6 @@
 [submodule "src/weather-app"]
 	path = src/weather-app
 	url = git@github.com:tbarinka/weather-app.git
+[submodule "src/homepage/weather-app"]
+	path = src/homepage/weather-app
+	url = git@github.com:tbarinka/weather-app.git
