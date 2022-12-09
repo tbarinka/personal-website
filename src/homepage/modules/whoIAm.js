@@ -27,13 +27,6 @@ let whoIAmPara1 = paragraphFactory("At vero eos et accusamus et iusto odio digni
 let whoIAm = contentBoxFactory("Who I Am", whoIAmPara1);
 
 
-function contentBoxFactory(header, content) {
-    let container = document.createElement('div');
-    container.classList.add('contentBox');
-    container.appendChild(headerFactory(header));
-    container.appendChild(content);
-    return container;
-}
 function headerFactory(header) {
     let h = document.createElement('h2');
     h.classList.add('contentHeader');
@@ -46,10 +39,17 @@ function paragraphFactory(para) {
     p.innerHTML = para;
     return p;
 }
-function contentFactory() {
+function mainContentFactory() {
     let div = document.createElement('div');
     div.classList.add('content');
     return div;
 }
+function contentBoxFactory(header, content) {
+    let container = document.createElement('div');
+    container.classList.add('contentBox');
+    container.appendChild(headerFactory(header));
+    container.appendChild(content);
+    return container;
+}
 
-export { homePageLoader, contentBoxFactory, paragraphFactory, contentFactory, mainContent, removeAllChildNodes };
+export { homePageLoader, contentBoxFactory, paragraphFactory, mainContentFactory, mainContent, removeAllChildNodes };
