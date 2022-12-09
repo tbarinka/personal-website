@@ -1,4 +1,5 @@
 import { jsPageLoader } from './modules/javascript.js';
+import { homePageLoader } from './modules/whoIAm.js';
 
 function headerLoader() {
     let container = document.createElement('div');
@@ -17,6 +18,7 @@ function myLinks() {
     navBar.setAttribute('id', 'nav');
     let list = document.createElement('ul');
     list.setAttribute('id', 'linksList');
+    list.appendChild(linkFactory('Who I Am', homePageLoader));
     list.appendChild(linkFactory('Front-End Development', jsPageLoader));
     list.appendChild(linkFactory('Philosophy'));
     list.appendChild(linkFactory('Teaching'));
