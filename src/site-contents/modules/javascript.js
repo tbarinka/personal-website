@@ -1,6 +1,7 @@
 import { contentBoxFactory, paragraphFactory, mainContentFactory, removeAllChildNodes, mainContent } from './whoIAm.js';
 import { profileLoader } from '../profile.js';
 import { loadWeatherApp } from '../weather-app/src/domLogic.js';
+//import { loadAppWindow } from '../battleship/src/userInterface/boardDOMloader.js';
 
 function openAppButtonCreator(text, cb) {
     let button = document.createElement('button');
@@ -12,10 +13,14 @@ function openAppButtonCreator(text, cb) {
 function appendWeatherApp() {
     document.body.appendChild(loadWeatherApp());
 }
+function appendBattleship() {
+    console.log('battleship test');
+}
 function OpenAppButtonContainerCreator() {
     let buttonContainer = document.createElement('div');
-    buttonContainer.appendChild(openAppButtonCreator("A Weather App", appendWeatherApp));
-    buttonContainer.style.display = "flex";
+    buttonContainer.setAttribute('id', 'appButtonContainer')
+    buttonContainer.appendChild(openAppButtonCreator("Weather App", appendWeatherApp));
+    buttonContainer.appendChild(openAppButtonCreator("Battleship", appendBattleship))
     return buttonContainer;
 }
 

@@ -57,10 +57,14 @@
 }
 
 /* styles for JS portfolio */
+#appButtonContainer {
+    display: flex;
+    gap: 15px;
+}
 .openAppButtons {
     font-size: 18px;
-    height: 100px;
-    width: 90px;
+    height: 70px;
+    width: 140px;
     border-radius: 10px;
 }
 

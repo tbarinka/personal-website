@@ -1,6 +1,6 @@
 import './style.css';
-import { headerLoader } from './homepage/header.js';
-import { homePageLoader } from './homepage/modules/whoIAm.js';
+import { headerLoader } from './site-contents/header.js';
+import { homePageLoader } from './site-contents/modules/whoIAm.js';
 
 
 document.body.appendChild(headerLoader());
