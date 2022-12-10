@@ -7,3 +7,6 @@
 [submodule "src/site-contents/battleship"]
 	path = src/site-contents/battleship
 	url = git@github.com:tbarinka/battleship.git
+[submodule "src/site-contents/weather-app"]
+	path = src/site-contents/weather-app
+	url = git@github.com:tbarinka/weather-app.git
