@@ -454,7 +454,8 @@ function itemDateProducer(itemDate) {
 //this function refreshes the main page whenever you add a new task, to make the new task appear
 function refreshPage() {
     let content = document.getElementById("content");
-    const mainTitle = content.firstChild.nextSibling.nextSibling.firstChild.firstChild.firstChild.textContent;
+    console.log(content.firstChild.nextSibling.firstChild.firstChild.firstChild.textContent)
+    const mainTitle = content.firstChild.nextSibling.firstChild.firstChild.firstChild.textContent;
 
     if (mainTitle == "All Tasks") { mainDOMLoadAll() }
     else if (mainTitle == "Today") { mainDOMLoadToday() }
