@@ -2,28 +2,47 @@ import { contentBoxFactory, paragraphFactory, mainContentFactory, removeAllChild
 import { profileLoader } from '../profile.js';
 import { loadWeatherApp } from '../weather-app/src/domLogic.js';
 import { loadAppWindow } from '../battleship-app/personal-website-initializer.js';
+import { personalSitePageLoader } from '../to-do-list/personal-website-initializer.js';
 
-function openAppButtonCreator(text, cb) {
+function jsPageLoader() {
+    let container = document.createElement('div');
+    container.setAttribute('id', 'mainContainer');
+    let jsBox = contentBoxFactory("Web Development", jsMainContentLoader());
+    container.appendChild(profileLoader());
+    container.appendChild(mainContent(jsBox));
+    return container;
+}
+
+function openAppButtonCreator(text, cb, url = null) {
     let button = document.createElement('button');
     button.textContent = text;
-    button.addEventListener('click', cb);
     button.classList.add('openAppButtons');
+    if (url !== null) {
+        button.setAttribute('onclick', url)
+    } else {
+        button.addEventListener('click', cb);
+    }
     return button;
 }
-function appendWeatherApp() {
+function openWeatherApp() {
     document.body.appendChild(loadWeatherApp());
 }
-function appendBattleship() {
+function openBattleship() {
     let container = document.createElement('div');
     container.setAttribute('id', 'container');
     document.body.appendChild(container);
     loadAppWindow()
 }
+function openToDoList() {
+    personalSitePageLoader();
+    console.log('test');
+}
 function OpenAppButtonContainerCreator() {
     let buttonContainer = document.createElement('div');
     buttonContainer.setAttribute('id', 'appButtonContainer')
-    buttonContainer.appendChild(openAppButtonCreator("Weather App", appendWeatherApp));
-    buttonContainer.appendChild(openAppButtonCreator("Battleship", appendBattleship))
+    buttonContainer.appendChild(openAppButtonCreator("Weather App", openWeatherApp));
+    buttonContainer.appendChild(openAppButtonCreator("Battleship", openBattleship))
+    buttonContainer.appendChild(openAppButtonCreator("Task Organizer", openToDoList))
     return buttonContainer;
 }
 
@@ -44,12 +63,5 @@ function jsMainContentLoader() {
     return jsContent;
 }
 
-function jsPageLoader() {
-    let container = document.getElementById('mainContainer');
-    removeAllChildNodes(container);
-    let jsBox = contentBoxFactory("Web Development", jsMainContentLoader());
-    container.appendChild(profileLoader());
-    container.appendChild(mainContent(jsBox));
-}
 
 export { jsPageLoader };

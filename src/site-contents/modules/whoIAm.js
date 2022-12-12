@@ -3,7 +3,8 @@ import { philosophyBox } from './philosophy.js';
 //import { jsBox } from './modules/javascript.js';
 
 function homePageLoader() {
-    let container = document.getElementById('mainContainer');
+    let container = document.createElement('div');
+    container.setAttribute('id', 'mainContainer');
     removeAllChildNodes(container);
     container.appendChild(profileLoader());
     container.appendChild(mainContent(whoIAm));
@@ -41,7 +42,7 @@ function paragraphFactory(para) {
 }
 function mainContentFactory() {
     let div = document.createElement('div');
-    div.classList.add('content');
+    div.classList.add('siteContent');
     return div;
 }
 function contentBoxFactory(header, content) {
