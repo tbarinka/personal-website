@@ -1,7 +1,7 @@
 import plus from './images/plus.png';
 import checklist from './images/clipboard-check-multiple-outline.png';
 import mdiTrashCanOutline from './images/mdiTrashCanOutline.png';
-import { compareAsc, format } from 'date-fns';
+import { isSameWeek, format } from 'date-fns';
 
 function personalSitePageLoader() {
     removeAllChildNodes(document.body);
@@ -340,18 +340,21 @@ function loadTodayTasks() {
 
 function mainDOMLoadThisWeek() {
     let content = document.getElementById('content');
-    const container = document.createElement('div');
-        container.classList.add('mainContainer');
     content.lastChild.remove();
+    const container = document.createElement('div');
+    container.classList.add('mainContainer');
     container.appendChild(mainIntegratorThisWeek());
     content.appendChild(container);
-
+    let all = content.firstChild.firstChild.nextSibling;
+    let today = content.firstChild.firstChild.nextSibling.nextSibling;
+    let thisWeek = content.firstChild.firstChild.nextSibling.nextSibling.nextSibling;
     thisWeek.classList.add('sidebarItemSelected')
     if (all.classList.contains('sidebarItemSelected')) {all.classList.remove('sidebarItemSelected') && all.classList.add('sidebarIntegratedItem')}
     if (today.classList.contains('sidebarItemSelected')) {today.classList.remove('sidebarItemSelected') && today.classList.add('sidebarIntegratedItem')}
-    
     let lists = content.firstChild.nextSibling.lastChild.lastChild;
-    lists.firstChild.remove();
+    if (lists.hasChildNodes() == true) {
+        lists.firstChild.remove();
+    }
     lists.appendChild(loadDOMSidebarLists());
     checkSelectedListItems();
 }
