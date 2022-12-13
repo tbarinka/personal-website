@@ -436,6 +436,14 @@ function itemDateProducer(itemDate) {
 }
     function trashCan() {
         const button = document.createElement('button');
+        button.addEventListener('click', () => {
+            button.parentNode.parentNode.remove();
+            ///code to delete the corresponding array item from userTasks
+            let itemTitle = button.parentNode.parentNode.firstChild.firstChild.textContent;
+            let correspondingArrayItem = userTasks.find(task => task.title == itemTitle);
+            let arrayItemIndex = userTasks.indexOf(arrayItem);
+            userTasks.splice(index, 1);
+        })
         const trash = new Image();
             trash.src = mdiTrashCanOutline;
             trash.classList.add('listItemIconButton');
