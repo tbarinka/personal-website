@@ -182,8 +182,6 @@ function mainDOMLoadList(listTitle) {
     container.appendChild(mainIntegratorListLoader(listTitle))
     content.appendChild(container);
     let lists = content.firstChild.lastChild.lastChild;
-    //let lists = content.firstChild.nextSibling.lastChild.lastChild;
-    console.log(lists);
     if (lists.hasChildNodes() == true) {
         lists.firstChild.remove();
     }
@@ -244,7 +242,6 @@ function loadList(listTitle) {
 
     const array = filterTaskstoList(listTitle);
     array.forEach((element) => {
-        console.log(element.date);
         container.appendChild(listItemIntegrator(element.title, element.date));
     });
     return container;
@@ -332,13 +329,15 @@ function mainIntegratorTodayLoader() {
 };
 
 function loadTodayTasks() {
-        const container = document.createElement('div');
-            container.classList.add('listContentContainer');
-        const array = filterTodayTasks();
-        array.forEach((element) => {
-            container.appendChild(listItemIntegrator(element.title, element.date));
-        });
-        return container;
+    const container = document.createElement('div');
+        container.classList.add('listContentContainer');
+    const array = filterTodayTasks();
+    console.log('loadTodayTasks test');
+    console.log(array);
+    array.forEach((element) => {
+        container.appendChild(listItemIntegrator(element.title, element.date));
+    });
+    return container;
 };
 
     //This Week Suite
@@ -727,9 +726,9 @@ function sortTasksToAll() {
     return sortedTasks;
 }
 function filterTodayTasks() {
-    var today = format(new Date(), 'YYY-MM-dd').toString();
+    let today = format(new Date(), 'yyyy-LL-dd');
     const filteredTasks = userTasks.filter(function(task) {
-        if (today.includes(task.date)) return task;
+        if (today == task.date) return task;
     })
     return filteredTasks;
 }
@@ -750,7 +749,6 @@ function createListArrayObject(name) {
 
 function pushToUserLists(name) {
     userLists.push(createListArrayObject(name));
-    console.log(userLists);
 }
 
 
