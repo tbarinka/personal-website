@@ -181,7 +181,9 @@ function mainDOMLoadList(listTitle) {
     content.lastChild.remove();
     container.appendChild(mainIntegratorListLoader(listTitle))
     content.appendChild(container);
-    let lists = content.firstChild.nextSibling.lastChild.lastChild;
+    let lists = content.firstChild.lastChild.lastChild;
+    //let lists = content.firstChild.nextSibling.lastChild.lastChild;
+    console.log(lists);
     if (lists.hasChildNodes() == true) {
         lists.firstChild.remove();
     }
@@ -191,8 +193,8 @@ function mainDOMLoadList(listTitle) {
 }
 
     function checkSelectedListItems() {
-        const nodeList = document.querySelectorAll('.sidebarListItemContainer');
-        const secondNodeList = document.querySelectorAll('sidebarListItemContainerSelected');
+        let nodeList = document.querySelectorAll('.sidebarListItemContainer');
+        let secondNodeList = document.querySelectorAll('sidebarListItemContainerSelected');
         
         for (let i = 0; i < secondNodeList.length; i++) {
             let item = nodeList[i];
@@ -204,9 +206,6 @@ function mainDOMLoadList(listTitle) {
         for (let i = 0; i < nodeList.length; i++) {
             let item = nodeList[i];
             let mainContainer = document.querySelector('.mainContainer');
-            console.log('test checkSelectedListItems');
-            console.log(item);
-            console.log(mainContainer);
             if (item.firstChild.textContent == mainContainer.firstChild.firstChild.textContent) {
                 item.classList.remove('sidebarListItemContainer');
                 item.classList.add('sidebarListItemContainerSelected');
@@ -267,8 +266,8 @@ function mainDOMLoadAll() {
     all.classList.add('sidebarItemSelected')
     if (today.classList.contains('sidebarItemSelected')) {today.classList.remove('sidebarItemSelected') && today.classList.add('sidebarIntegratedItem')}
     if (thisWeek.classList.contains('sidebarItemSelected')) {thisWeek.classList.remove('sidebarItemSelected') && thisWeek.classList.add('sidebarIntegratedItem')}
-
-    let lists = content.firstChild.nextSibling.lastChild.lastChild;
+    let lists = content.firstChild.lastChild.lastChild;
+    //let lists = content.firstChild.nextSibling.lastChild.lastChild;
     if (lists.hasChildNodes() == true) {
         lists.firstChild.remove();
     }
@@ -314,7 +313,8 @@ function mainDOMLoadToday() {
     if (all.classList.contains('sidebarItemSelected')) {all.classList.remove('sidebarItemSelected') && all.classList.add('sidebarIntegratedItem')}
     if (thisWeek.classList.contains('sidebarItemSelected')) {thisWeek.classList.remove('sidebarItemSelected') && thisWeek.classList.add('sidebarIntegratedItem')}
     
-    let lists = content.firstChild.nextSibling.lastChild.lastChild;
+    let lists = content.firstChild.lastChild.lastChild;
+    //let lists = content.firstChild.nextSibling.lastChild.lastChild;
     if (lists.hasChildNodes() == true) {
         lists.firstChild.remove();
     }
@@ -356,7 +356,8 @@ function mainDOMLoadThisWeek() {
     thisWeek.classList.add('sidebarItemSelected')
     if (all.classList.contains('sidebarItemSelected')) {all.classList.remove('sidebarItemSelected') && all.classList.add('sidebarIntegratedItem')}
     if (today.classList.contains('sidebarItemSelected')) {today.classList.remove('sidebarItemSelected') && today.classList.add('sidebarIntegratedItem')}
-    let lists = content.firstChild.nextSibling.lastChild.lastChild;
+    //let lists = content.firstChild.nextSibling.lastChild.lastChild;
+    let lists = content.firstChild.lastChild.lastChild;
     if (lists.hasChildNodes() == true) {
         lists.firstChild.remove();
     }
