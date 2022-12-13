@@ -602,7 +602,7 @@ function addListCardDOMLoad(s1, s2) {
         let name = card.firstChild.lastChild.value;
         if (name == "") { return }
         pushToUserLists(name);
-        let lists = content.firstChild.nextSibling.lastChild.lastChild;
+        let lists = content.firstChild.lastChild.lastChild;
         lists.textContent = "";
         lists.appendChild(loadDOMSidebarLists());
         card.remove();
