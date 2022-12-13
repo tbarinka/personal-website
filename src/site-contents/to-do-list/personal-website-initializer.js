@@ -1,6 +1,7 @@
 import plus from './images/plus.png';
 import checklist from './images/clipboard-check-multiple-outline.png';
 import mdiTrashCanOutline from './images/mdiTrashCanOutline.png';
+import { compareAsc, format } from 'date-fns';
 
 function personalSitePageLoader() {
     removeAllChildNodes(document.body);
@@ -294,21 +295,24 @@ function loadAllTasks() {
     //Today Loader Suite
 
 function mainDOMLoadToday() {
-    const container = document.createElement('div');
-    container.classList.add('mainContainer');
     let content = document.getElementById('content');
     content.lastChild.remove();
+    let container = document.createElement('div');
+    container.classList.add('mainContainer');
     container.appendChild(mainIntegratorTodayLoader());
     content.appendChild(container);
 
-
+    let all = content.firstChild.firstChild.nextSibling;
+    let today = content.firstChild.firstChild.nextSibling.nextSibling;
+    let thisWeek = content.firstChild.firstChild.nextSibling.nextSibling.nextSibling;
     today.classList.add('sidebarItemSelected')
     if (all.classList.contains('sidebarItemSelected')) {all.classList.remove('sidebarItemSelected') && all.classList.add('sidebarIntegratedItem')}
     if (thisWeek.classList.contains('sidebarItemSelected')) {thisWeek.classList.remove('sidebarItemSelected') && thisWeek.classList.add('sidebarIntegratedItem')}
     
-    
     let lists = content.firstChild.nextSibling.lastChild.lastChild;
-    lists.firstChild.remove();
+    if (lists.hasChildNodes() == true) {
+        lists.firstChild.remove();
+    }
     lists.appendChild(loadDOMSidebarLists());
     checkSelectedListItems();
 }
@@ -451,7 +455,9 @@ function itemDateProducer(itemDate) {
 //this function refreshes the main page whenever you add a new task, to make the new task appear
 function refreshPage() {
     let content = document.getElementById("content");
-    const mainTitle = content.firstChild.nextSibling.firstChild.firstChild.firstChild.textContent;
+    let mainTitle = content.firstChild.nextSibling.firstChild.firstChild.firstChild.textContent;
+    console.log('test refresh page');
+    console.log(mainTitle);
 
     if (mainTitle == "All Tasks") { mainDOMLoadAll() }
     else if (mainTitle == "Today") { mainDOMLoadToday() }
