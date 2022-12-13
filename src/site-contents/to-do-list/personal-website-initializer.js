@@ -495,16 +495,7 @@ function createTaskDOMLoad() {
         const list = document.getElementById('list');
         const title = document.getElementById('title');
         if (title.value == "") { return }
-        //this if/else construction is a bandaid for a bug that I can't figure out.
-        //the bug is this: the organizer won't load a task on the DOM if userTasks has only one element
-        //but once there are two elements, it will skip the first and start with the second
-        //so my fix is: push the first task twice
-        if (userTasks.length > 1) {
-            pushTaskToArray(title.value, date.value, list.value);
-        } else if (userTasks.length == 0) {
-            pushTaskToArray(title.value, date.value, list.value);
-            pushTaskToArray(title.value, date.value, list.value);
-        }
+        pushTaskToArray(title.value, date.value, list.value);
         card.remove();
         refreshPage();
     });
