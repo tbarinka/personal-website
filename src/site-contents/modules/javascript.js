@@ -35,7 +35,6 @@ function openBattleship() {
 }
 function openToDoList() {
     personalSitePageLoader();
-    console.log('test');
 }
 function OpenAppButtonContainerCreator() {
     let buttonContainer = document.createElement('div');

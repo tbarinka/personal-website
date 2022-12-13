@@ -249,27 +249,25 @@ function loadList(listTitle) {
 
 function mainDOMLoadAll() {
     let content = document.getElementById('content');
-    const container = document.createElement('div');
-        container.classList.add('mainContainer');
     content.lastChild.remove();
-    container.appendChild(mainIntegratorAllLoader())
+    const container = document.createElement('div');
+    container.classList.add('mainContainer');
+    container.appendChild(mainIntegratorAllLoader());
     content.appendChild(container);
 
     const all = content.firstChild.firstChild.nextSibling;
-    console.log(content.firstChild.firstChild.nextSibling.nextSibling.nextSibling);
     const today = content.firstChild.firstChild.nextSibling.nextSibling;
     const thisWeek = content.firstChild.firstChild.nextSibling.nextSibling.nextSibling;
     all.classList.add('sidebarItemSelected')
     if (today.classList.contains('sidebarItemSelected')) {today.classList.remove('sidebarItemSelected') && today.classList.add('sidebarIntegratedItem')}
     if (thisWeek.classList.contains('sidebarItemSelected')) {thisWeek.classList.remove('sidebarItemSelected') && thisWeek.classList.add('sidebarIntegratedItem')}
-    
+
     let lists = content.firstChild.nextSibling.lastChild.lastChild;
     if (lists.hasChildNodes() == true) {
         lists.firstChild.remove();
     }
     lists.appendChild(loadDOMSidebarLists());
     checkSelectedListItems();
-
 }
 
 function mainIntegratorAllLoader() {
@@ -396,7 +394,6 @@ function listItemIntegrator(itemTitle, itemDate) {
             userTasks.forEach(task =>  {
                 if (taskTitle == task.title) {
                     userTasks.splice(userTasks.indexOf(task), 1);
-                    console.log(userTasks);
                 }
                 container.remove();
             })
@@ -406,8 +403,8 @@ function listItemIntegrator(itemTitle, itemDate) {
 function listItem(itemTitle) {
     const container = document.createElement('div');
         container.classList.add('leftListItem');
-    const label = document.createElement("label");
-        label.setAttribute("for", "checkbox");
+    const label = document.createElement("div");
+        //label.setAttribute("for", "checkbox");
         label.textContent = itemTitle;
     container.appendChild(label);
     return container;
@@ -454,7 +451,6 @@ function itemDateProducer(itemDate) {
 //this function refreshes the main page whenever you add a new task, to make the new task appear
 function refreshPage() {
     let content = document.getElementById("content");
-    console.log(content.firstChild.nextSibling.firstChild.firstChild.firstChild.textContent)
     const mainTitle = content.firstChild.nextSibling.firstChild.firstChild.firstChild.textContent;
 
     if (mainTitle == "All Tasks") { mainDOMLoadAll() }
@@ -479,16 +475,25 @@ function createTaskDOMLoad() {
         });
         card.lastChild.firstChild.setAttribute("id", "cancelTask")
         //event listener on create button
-        card.lastChild.lastChild.addEventListener('click', (event) => {
-            const date = document.getElementById('date');
-            const list = document.getElementById('list');
-            const title = document.getElementById('title');
-            if (title.value == "") { return }
+    card.lastChild.lastChild.addEventListener('click', (event) => {
+        const date = document.getElementById('date');
+        const list = document.getElementById('list');
+        const title = document.getElementById('title');
+        if (title.value == "") { return }
+        //this if/else construction is a bandaid for a bug that I can't figure out.
+        //the bug is this: the organizer won't load a task on the DOM if userTasks has only one element
+        //but once there are two elements, it will skip the first and start with the second
+        //so my fix is: push the first task twice
+        if (userTasks.length > 1) {
             pushTaskToArray(title.value, date.value, list.value);
-            card.remove();
-            refreshPage();
-        });
-        card.lastChild.lastChild.setAttribute("id", "addTask")
+        } else if (userTasks.length == 0) {
+            pushTaskToArray(title.value, date.value, list.value);
+            pushTaskToArray(title.value, date.value, list.value);
+        }
+        card.remove();
+        refreshPage();
+    });
+    card.lastChild.lastChild.setAttribute("id", "addTask")
 
     if (document.body.nextSibling !== null) {
         document.body.nextSibling.remove();
@@ -625,14 +630,14 @@ function loadDOMSidebarLists() {
     return item;
 }
 function listIcon() {
-    const button = document.createElement('button');
+    let button = document.createElement('button');
         button.classList.add('sidebarListIconButton');
         button.addEventListener('click', () => {
             button.parentNode.remove();
             deleteList();
         })
-    const trashIcon = new Image();
-        trashIcon.src = trash;
+    let trashIcon = new Image();
+        trashIcon.src = mdiTrashCanOutline;
         trashIcon.classList.add('sidebarListIcon');
     button.appendChild(trashIcon);
     return button;
@@ -684,7 +689,6 @@ function listCardButton(s) {
 }
 
 //createTaskApp
-
 let userTasks = [];
 
 class Task {
@@ -696,12 +700,12 @@ class Task {
 
 }
 function pushTaskToArray(title, date, list) {
-    const t = new Task(title, date, list);
+    let t = new Task(title, date, list);
     userTasks.push(t);
 }
 function filterTaskstoList(listTitle) {
-    const filteredList = [];
-    const filteredTasks = userTasks.filter(function(task) {
+    let filteredList = [];
+    let filteredTasks = userTasks.filter(function(task) {
         if (task.list == listTitle) filteredList.push(task);
     });
     return filteredList;
