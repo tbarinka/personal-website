@@ -182,7 +182,9 @@ function mainDOMLoadList(listTitle) {
     container.appendChild(mainIntegratorListLoader(listTitle))
     content.appendChild(container);
     let lists = content.firstChild.nextSibling.lastChild.lastChild;
-    lists.firstChild.remove();
+    if (lists.hasChildNodes() == true) {
+        lists.firstChild.remove();
+    }
     lists.appendChild(loadDOMSidebarLists());
     checkSelectedListItems();
     unselectTop3SidebarItems();
@@ -201,7 +203,10 @@ function mainDOMLoadList(listTitle) {
 
         for (let i = 0; i < nodeList.length; i++) {
             let item = nodeList[i];
-            let mainContainer = document.getElementById('mainContainer');
+            let mainContainer = document.querySelector('.mainContainer');
+            console.log('test checkSelectedListItems');
+            console.log(item);
+            console.log(mainContainer);
             if (item.firstChild.textContent == mainContainer.firstChild.firstChild.textContent) {
                 item.classList.remove('sidebarListItemContainer');
                 item.classList.add('sidebarListItemContainerSelected');
@@ -215,9 +220,9 @@ function mainDOMLoadList(listTitle) {
     }
     function unselectTop3SidebarItems() {
         let content = document.getElementById('content');
-        const all = content.firstChild.nextSibling.firstChild.nextSibling;
-        const today = content.firstChild.nextSibling.firstChild.nextSibling.nextSibling;
-        const thisWeek = content.firstChild.nextSibling.firstChild.nextSibling.nextSibling.nextSibling;
+        let all = content.firstChild.firstChild.nextSibling;
+        let today = content.firstChild.firstChild.nextSibling.nextSibling;
+        let thisWeek = content.firstChild.firstChild.nextSibling.nextSibling.nextSibling;
         if (all.classList.contains('sidebarItemSelected')) {all.classList.remove('sidebarItemSelected') && all.classList.add('sidebarIntegratedItem')}
         if (today.classList.contains('sidebarItemSelected')) {today.classList.remove('sidebarItemSelected') && today.classList.add('sidebarIntegratedItem')}
         if (thisWeek.classList.contains('sidebarItemSelected')) {thisWeek.classList.remove('sidebarItemSelected') && thisWeek.classList.add('sidebarIntegratedItem')}
