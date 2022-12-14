@@ -2,6 +2,7 @@ import plus from './images/plus.png';
 import checklist from './images/clipboard-check-multiple-outline.png';
 import mdiTrashCanOutline from './images/mdiTrashCanOutline.png';
 import { isSameWeek, format } from 'date-fns';
+import { exportableLoadHomePage } from '../header.js';
 
 function personalSitePageLoader() {
     removeAllChildNodes(document.body);
@@ -38,21 +39,28 @@ function leftHeaderContent() {
         left.classList.add('leftHeaderContent');
     const h = document.createElement('p');
         h.classList.add("toDo")
-        h.textContent = "ToDo"
+        h.textContent = "ToDoList"
     left.appendChild(headerIcon())
     left.appendChild(h);
     return left
 }
 function headerIcon() {
-    const icon = new Image();
+    let icon = new Image();
     icon.src = checklist;
     icon.classList.add('headerIcon');
     return icon;
 }
 function rightHeaderContent() {
-    const right = document.createElement('div');
+    let right = document.createElement('div');
+    right.setAttribute('id', 'organizerRightHeaderContent');
+    right.appendChild(removeAppText());
     right.appendChild(removeAppBtn());
     return right;
+}
+function removeAppText() {
+    let div = document.createElement('div');
+    div.textContent = "Exit to Website";
+    return div
 }
 function removeAppBtn() {
     let btn = document.createElement('button');
@@ -63,7 +71,12 @@ function removeAppBtn() {
 }
 function removeApp() {
     let body = document.getElementById('body');
-    body.remove();
+    removeAllChildNodes(body);
+    while (userTasks.length > 0) {
+        userTasks.pop();
+    }
+    exportableLoadHomePage(); //this calls loadHomePage() from navFunctions.js,
+                                //but through an intermediary exported from site-contents/header.js
 }
 
 //sidebar functions

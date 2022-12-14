@@ -40,4 +40,11 @@ function linkFactory(text, cb = null) {
     return listItem;
 }
 
-export { headerLoader };
+//I need to import loadHomePage() from navFunctions.js to to-do-list/personal-website-initializer
+//and I am using this function below as an intermediary, because the two files are too far from each other
+//in the file system
+function exportableLoadHomePage() {
+    loadHomePage();
+}
+
+export { exportableLoadHomePage, headerLoader };

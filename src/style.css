@@ -481,7 +481,7 @@
 }
 
 
-/*styles for toDoList */
+/*styles for toDoList / organizer */
 
 #body {
     padding: 0;
@@ -514,6 +514,11 @@
     padding: 5px;
     gap: 5px;
     margin-left: 40px;
+}
+#organizerRightHeaderContent {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .toDo {

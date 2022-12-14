@@ -5,7 +5,6 @@ import { philosophyBox } from './philosophy.js';
 function homePageLoader() {
     let container = document.createElement('div');
     container.setAttribute('id', 'mainContainer');
-    removeAllChildNodes(container);
     container.appendChild(profileLoader());
     container.appendChild(mainContent(whoIAm));
     return container;
@@ -19,8 +18,8 @@ function mainContent(node) {
 }
 
 function removeAllChildNodes(parent) {
-    while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
+    while (parent.hasChildNodes() == true) {
+        parent.firstChild.remove();
     }
 }
 
