@@ -1,6 +1,6 @@
-import { jsPageLoader } from './modules/javascript.js';
+//import { jsPageLoader } from './modules/javascript.js';
 import { homePageLoader } from './modules/whoIAm.js';
-import { loadHomePage, loadJsPage } from '../navFunctions.js';
+import { loadHomePage, loadJsPage, visitJavascriptHTML, visitHomepageHTML } from '../navFunctions.js';
 
 
 function headerLoader() {
@@ -20,8 +20,8 @@ function myLinks() {
     navBar.setAttribute('id', 'nav');
     let list = document.createElement('ul');
     list.setAttribute('id', 'linksList');
-    list.appendChild(linkFactory('Who I Am', loadHomePage));
-    list.appendChild(linkFactory('Front-End Development', loadJsPage));
+    list.appendChild(linkFactory('About Me', visitHomepageHTML));
+    list.appendChild(linkFactory('Javascript', visitJavascriptHTML));
     list.appendChild(linkFactory('Philosophy'));
     list.appendChild(linkFactory('Teaching'));
     list.appendChild(linkFactory('Games Writing'));

@@ -33,8 +33,15 @@ function openBattleship() {
     document.body.appendChild(container);
     loadAppWindow()
 }
+
+function visitPage(){
+    window.location='task-organizer.html';
+}
+
 function openToDoList() {
-    personalSitePageLoader();
+    //personalSitePageLoader();
+    //visitPage();
+    window.location='task-organizer.html';
 }
 function OpenAppButtonContainerCreator() {
     let buttonContainer = document.createElement('div');

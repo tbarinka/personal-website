@@ -1,15 +1,20 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    'task-organizer': './src/task-organizer.js',
+    javascript: './src/javascript.js'
+  },
   devtool: 'inline-source-map',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-    },
+  //output: {
+    //filename: 'main.js',
+    //path: path.resolve(__dirname, 'dist'),
+  //},
   module: {
     rules: [
       {
@@ -24,9 +29,23 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      inject: 'body',
-      template: './src/index.html',
-      filename: 'index.html'
-    })
+        template: './src/index.html',
+        inject: true,
+        chunks: ['index'],
+        filename: 'index.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/task-organizer.html',
+      inject: true,
+      chunks: ['task-organizer'],
+      filename: 'task-organizer.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/javascript.html',
+      inject: true,
+      chunks: ['javascript'],
+      filename: 'javascript.html'
+    }),
+    new CleanWebpackPlugin(['dist'])   
   ]
 };

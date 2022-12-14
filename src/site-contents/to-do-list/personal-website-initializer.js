@@ -70,13 +70,14 @@ function removeAppBtn() {
     return btn;
 }
 function removeApp() {
-    let body = document.getElementById('body');
-    removeAllChildNodes(body);
-    while (userTasks.length > 0) {
-        userTasks.pop();
-    }
-    exportableLoadHomePage(); //this calls loadHomePage() from navFunctions.js,
-                                //but through an intermediary exported from site-contents/header.js
+    window.location='index.html';
+    //let body = document.getElementById('body');
+    //removeAllChildNodes(body);
+    //while (userTasks.length > 0) {
+    //    userTasks.pop();
+    //}
+    //exportableLoadHomePage(); //this calls loadHomePage() from navFunctions.js,
+                              //but through an intermediary exported from site-contents/header.js
 }
 
 //sidebar functions
