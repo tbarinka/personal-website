@@ -922,6 +922,7 @@ function generateHUD() {
     doubleScoreKeeperGenerator("Player", 0, "AI", 0);
     twoBoardDOMLoader(boards.playerBoard, boards.aiBoard);
     placementModuleLoader();
+    playerArray = boards.playerBoard.grid.slice();
 }
 function generateButtons() {
     let container = document.createElement('div');
@@ -972,7 +973,7 @@ function attackAI(x, y) {
 //playerArray below contains globally available copy of playerBoard grid, for use by AI
 //every time the AI attacks player, selects one element at random from the array and then removes it
 //so that future invocations cannot attack the same location
-const playerArray = boards.playerBoard.grid.slice();
+let playerArray = boards.playerBoard.grid.slice();
 function attackPlayer() {
     if (playerArray.length == 0) return alert('game over!')
     let random = playerArray[Math.floor(Math.random() * playerArray.length)];
@@ -1016,12 +1017,18 @@ function generateForm() {
     return container
 }
 
-function loadAppWindow() {
-    let container = document.createElement('div');
-    container.setAttribute('id', 'container');
-    placementModuleLoader();
-    loadBoards();
-    return container;
+let repeatBlocker = ""
+
+function loadBattleshipApp() {
+    if (repeatBlocker == 1) {
+        console.log('fuck')
+        return
+    } else {
+        placementModuleLoader();
+        loadBoards();
+        repeatBlocker = 1;
+        console.log('battleship test');
+    }
 }
 
-export { loadAppWindow }
+export { loadBattleshipApp }

@@ -1,7 +1,7 @@
 import { contentBoxFactory, paragraphFactory, mainContentFactory, removeAllChildNodes, mainContent } from './whoIAm.js';
 import { profileLoader } from '../profile.js';
 import { loadWeatherApp } from '../weather-app/src/domLogic.js';
-import { loadAppWindow } from '../battleship-app/personal-website-initializer.js';
+//import { loadBattleshipApp } from '../battleship-app/battleship-app-code.js';
 import { personalSitePageLoader } from '../to-do-list/personal-website-initializer.js';
 
 function jsPageLoader() {
@@ -28,15 +28,13 @@ function openWeatherApp() {
     document.body.appendChild(loadWeatherApp());
 }
 function openBattleship() {
-    let container = document.createElement('div');
-    container.setAttribute('id', 'container');
-    document.body.appendChild(container);
-    loadAppWindow()
+    //let container = document.createElement('div');
+    //container.setAttribute('id', 'container');
+    //document.body.appendChild(container);
+    //loadAppWindow()
+    window.location = 'battleship.html';
 }
 
-function visitPage(){
-    window.location='task-organizer.html';
-}
 
 function openToDoList() {
     //personalSitePageLoader();

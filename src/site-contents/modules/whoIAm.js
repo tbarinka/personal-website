@@ -24,7 +24,9 @@ function removeAllChildNodes(parent) {
 }
 
 let whoIAmPara1 = paragraphFactory("At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.");
-let whoIAm = contentBoxFactory("Who I Am", whoIAmPara1);
+
+let whoIAm = contentBoxFactory("About Me", mainContentFactory());
+
 
 
 function headerFactory(header) {
@@ -42,6 +44,13 @@ function paragraphFactory(para) {
 function mainContentFactory() {
     let div = document.createElement('div');
     div.classList.add('siteContent');
+    div.appendChild(paragraphFactory('Hi – I’m Taylor Barinka.'));
+    div.appendChild(paragraphFactory('I have a bachelor’s degree in Classical Languages (Ancient Greek and Latin) from the University of Michigan, and a master’s degree in Ancient Philosophy from the University of Oxford. I also did five years of graduate work at the University of Toronto, where I researched and taught in the field of Philosophy.'));
+    //div.appendChild(paragraphFactory('I find creative satisfaction in the rigors of logic, and in the way in which that rigor can yield simple solutions to complex problems. It’s the satisfaction that drove my stint in academic philosophy. Writing a good philosophy paper, or teaching a good philosophy class, is almost like a magic trick: you take up a question that your audience finds difficult to answer, and then you work out an approach that makes it look easy, by breaking it down into simpler and more tractable component problems. I love to take an audience through that process, and walk them from a position of confusion to clarity of understanding.'));
+    div.appendChild(paragraphFactory('If you’re interested in some of my philosophical work, you can sample my writing here and my teaching here.'));
+    div.appendChild(paragraphFactory("I'm also a developer proficient in JavaScript. I do the front-end, and I am in the process of learning the back-end. You can check out a portfolio here."));
+    //div.appendChild(paragraphFactory("I'm drawn to programming because it affords that a satisfaction similar to the one I find in philosophy: the beauty of reducing complex problems to simple solutions. So often a programing challenge at first appears impossible to resolve, but with a little bit of patience, and with an eye for breaking the problem down into its parts, the problem suddenly just – disappears!"));
+    //div.appendChild(paragraphFactory("I would also argue, somewhat more fancifully, that the programming is also similar to philosophy in so far as it affords insight into very basic questions about the realities of our world. But whereas philosophy has historically sought to understand the natural world, the programer has insight into the inner workings of the digitial world into which so much of our life and activity has been integrated in the age of information."));
     return div;
 }
 function contentBoxFactory(header, content) {

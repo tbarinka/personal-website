@@ -11,7 +11,7 @@ function headerLoader() {
     return container;
 }
 function myName(name) {
-    let myName = document.createElement('h1');
+    let myName = document.createElement('h3');
     myName.textContent = name;
     return myName;
 }
@@ -21,16 +21,17 @@ function myLinks() {
     let list = document.createElement('ul');
     list.setAttribute('id', 'linksList');
     list.appendChild(linkFactory('About Me', visitHomepageHTML));
-    list.appendChild(linkFactory('Javascript', visitJavascriptHTML));
+    list.appendChild(linkFactory('JavaScript', visitJavascriptHTML));
     list.appendChild(linkFactory('Philosophy'));
     list.appendChild(linkFactory('Teaching'));
-    list.appendChild(linkFactory('Games Writing'));
+    //list.appendChild(linkFactory('Games Writing'));
     navBar.appendChild(list);
     return navBar;
 }
     //Note to self: add 'link' as paramter to linkFactory when ready to implement links
 function linkFactory(text, cb = null) {
     let listItem = document.createElement('li');
+    listItem.classList.add('headerLink')
     let myLink = document.createElement('h4');
     myLink.innerHTML = text;
     if (cb !== null) {

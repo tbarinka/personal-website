@@ -17,20 +17,22 @@ function profilePhoto() {
 }
 function introduction() {
     let div = document.createElement('div');
+    div.setAttribute('id', 'profileText')
     div.appendChild(myName());
-    div.appendChild(myDescriptors());
+    //div.appendChild(myDescriptors("Programmer - Researcher - Educator"));
     return div;
 }
 function myName() {
     let h = document.createElement('h2');
-    h.textContent = "Taylor Barinka";
+    h.textContent = "TAYLOR BARINKA";
     h.setAttribute('id', 'profileName');
     return h;
 }
-function myDescriptors() {
+function myDescriptors(text) {
     let p = document.createElement('p');
-    p.textContent = "Researcher - Educator - Writer - Programmer."
-    p.setAttribute('id', 'profileDescription')
+    p.textContent = text;
+    p.classList.add('profileDescription');
     return p;
 }
+
 export { profileLoader };

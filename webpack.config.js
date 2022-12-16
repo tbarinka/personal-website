@@ -4,11 +4,11 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
 module.exports = {
-  mode: 'development',
   entry: {
     index: './src/index.js',
     'task-organizer': './src/task-organizer.js',
-    javascript: './src/javascript.js'
+    javascript: './src/javascript.js',
+    battleship: './src/battleship.js'
   },
   devtool: 'inline-source-map',
   //output: {
@@ -45,6 +45,12 @@ module.exports = {
       inject: true,
       chunks: ['javascript'],
       filename: 'javascript.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/battleship.html',
+      inject: true,
+      chunks: ['battleship'],
+      filename: 'battleship.html'
     }),
     new CleanWebpackPlugin(['dist'])   
   ]

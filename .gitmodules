@@ -16,3 +16,6 @@
 [submodule "src/site-contents/ToDoList"]
 	path = src/site-contents/ToDoList
 	url = git@github.com:tbarinka/ToDoList.git
+[submodule "src/site-contents/--name"]
+	path = src/site-contents/--name
+	url = git@github.com:tbarinka/battleship.git
