@@ -1,12 +1,12 @@
 //import { jsPageLoader } from './modules/javascript.js';
 import { homePageLoader } from './modules/whoIAm.js';
-import { loadHomePage, loadJsPage, visitJavascriptHTML, visitHomepageHTML } from '../navFunctions.js';
+import { loadHomePage, loadJsPage, visitJavascriptHTML, visitHomepageHTML, visitPhilosophyHTML } from '../navFunctions.js';
 
 
 function headerLoader() {
     let container = document.createElement('div');
     container.setAttribute('id', 'header');
-    container.appendChild(myName('Taylor Barinka'));
+    container.appendChild(myName('TAYLOR BARINKA'));
     container.appendChild(myLinks());
     return container;
 }
@@ -20,10 +20,10 @@ function myLinks() {
     navBar.setAttribute('id', 'nav');
     let list = document.createElement('ul');
     list.setAttribute('id', 'linksList');
-    list.appendChild(linkFactory('About Me', visitHomepageHTML));
-    list.appendChild(linkFactory('JavaScript', visitJavascriptHTML));
-    list.appendChild(linkFactory('Philosophy'));
-    list.appendChild(linkFactory('Teaching'));
+    list.appendChild(linkFactory('ABOUT ME', visitHomepageHTML));
+    list.appendChild(linkFactory('JAVASCRIPT', visitJavascriptHTML));
+    list.appendChild(linkFactory('PHILOSOPHY', visitPhilosophyHTML));
+    list.appendChild(linkFactory('TEACHING'));
     //list.appendChild(linkFactory('Games Writing'));
     navBar.appendChild(list);
     return navBar;

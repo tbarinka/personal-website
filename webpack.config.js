@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 
 module.exports = {
@@ -8,7 +9,8 @@ module.exports = {
     index: './src/index.js',
     'task-organizer': './src/task-organizer.js',
     javascript: './src/javascript.js',
-    battleship: './src/battleship.js'
+    battleship: './src/battleship.js',
+    philosophy: './src/philosophy.js'
   },
   devtool: 'inline-source-map',
   //output: {
@@ -28,6 +30,12 @@ module.exports = {
     ],
   },
   plugins: [
+    new CopyPlugin({
+      patterns: [
+        { from: "src/site-contents/attachments/plato-virtue-law.docx", to: "attachments" },
+        //{ from: "src/site-contents/attachments/barinka-aesthetics.docx", to: "dist" },
+      ],
+    }),
     new HtmlWebpackPlugin({
         template: './src/index.html',
         inject: true,
@@ -51,6 +59,12 @@ module.exports = {
       inject: true,
       chunks: ['battleship'],
       filename: 'battleship.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/philosophy.html',
+      inject: true,
+      chunks: ['philosophy'],
+      filename: 'philosophy.html'
     }),
     new CleanWebpackPlugin(['dist'])   
   ]
