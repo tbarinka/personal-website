@@ -33,7 +33,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: "src/site-contents/attachments/plato-virtue-law.docx", to: "attachments" },
-        //{ from: "src/site-contents/attachments/barinka-aesthetics.docx", to: "dist" },
+        { from: "src/site-contents/attachments/barinka_aesthetics.docx", to: "attachments" },
       ],
     }),
     new HtmlWebpackPlugin({
@@ -65,6 +65,12 @@ module.exports = {
       inject: true,
       chunks: ['philosophy'],
       filename: 'philosophy.html'
+    }),
+      new HtmlWebpackPlugin({
+      template: './src/teaching.html',
+      inject: true,
+      chunks: ['teaching'],
+      filename: 'teaching.html'
     }),
     new CleanWebpackPlugin(['dist'])   
   ]

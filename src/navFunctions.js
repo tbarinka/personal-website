@@ -17,6 +17,9 @@ function visitHomepageHTML() {
 function visitPhilosophyHTML() {
     visitNewHTML('philosophy.html');
 }
+function visitTeachingHTML() {
+    visitNewHTML('teaching.html');
+}
 
 //these functions initialize appropriate DOM elements after navigating to html page
 function loadHomePage() {
@@ -34,5 +37,9 @@ function loadPhilosophyPage() {
     document.body.appendChild(headerLoader());
     document.body.appendChild(philosophyPageLoader());
 }
+function loadTeachingPage() {
+    removeAllChildNodes(document.body);
+    document.body.appendChild(headerLoader());
+}
 
-export { loadHomePage, loadJsPage, visitNewHTML, visitJavascriptHTML, visitHomepageHTML, visitPhilosophyHTML, loadPhilosophyPage }
+export { loadHomePage, loadJsPage, visitNewHTML, visitJavascriptHTML, visitHomepageHTML, visitPhilosophyHTML, loadPhilosophyPage, visitTeachingHTML, loadTeachingPage }

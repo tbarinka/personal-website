@@ -1,6 +1,6 @@
 //import { jsPageLoader } from './modules/javascript.js';
 import { homePageLoader } from './modules/whoIAm.js';
-import { loadHomePage, loadJsPage, visitJavascriptHTML, visitHomepageHTML, visitPhilosophyHTML } from '../navFunctions.js';
+import { loadHomePage, loadJsPage, visitJavascriptHTML, visitHomepageHTML, visitPhilosophyHTML, visitTeachingHTML } from '../navFunctions.js';
 
 
 function headerLoader() {
@@ -23,7 +23,7 @@ function myLinks() {
     list.appendChild(linkFactory('ABOUT ME', visitHomepageHTML));
     list.appendChild(linkFactory('JAVASCRIPT', visitJavascriptHTML));
     list.appendChild(linkFactory('PHILOSOPHY', visitPhilosophyHTML));
-    list.appendChild(linkFactory('TEACHING'));
+    list.appendChild(linkFactory('TEACHING', visitTeachingHTML));
     //list.appendChild(linkFactory('Games Writing'));
     navBar.appendChild(list);
     return navBar;
